@@ -1,0 +1,26 @@
+{
+  "name": "refactoring",
+  "version": "1.0.0",
+  "description": "refactoring 2nd edition tutorial",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --watch --recursive --require babel-core/register"
+  },
+  "author": "frknsnmz",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^5.12.1",
+    "js-money": "^0.6.3",
+    "sinon": "^7.3.2"
+  },
+  "devDependencies": {
+    "babel-preset-es201": "^0.0.1-security",
+    "babel-register": "^6.26.0",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  }
+}
