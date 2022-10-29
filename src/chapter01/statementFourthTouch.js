@@ -29,8 +29,6 @@ function statementv7(invoice, plays) {
   let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
   for (let perf of invoice.performances) {
-    
-
     // print line for this order
     result += `  ${playFor(perf).name}: ${usd(amountForv3(perf) / 100)} (${
       perf.audience
@@ -38,12 +36,37 @@ function statementv7(invoice, plays) {
     totalAmount += amountForv3(perf);
   }
   let volumeCredits = 0;
-  for(let perf of invoice.performances) {
+  for (let perf of invoice.performances) {
     volumeCredits += volumeCreditsForv2(perf);
   }
   result += `Amount owed is ${usd(totalAmount / 100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
+}
+
+// 
+function statementv8(invoice, plays) {
+  let totalAmount = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  for (let perf of invoice.performances) {
+    // print line for this order
+    result += `  ${playFor(perf).name}: ${usd(amountForv3(perf) / 100)} (${
+      perf.audience
+    } seats)\n`;
+    totalAmount += amountForv3(perf);
+  }
+  result += `Amount owed is ${usd(totalAmount / 100)}\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;
+  return result;
+}
+
+// newly added
+function totalVolumeCredits() {
+  let volumeCredits = 0;
+  for (let perf of invoice[0].performances) {
+    volumeCredits += volumeCreditsForv2(perf);
+  }
+  return volumeCredits;
 }
 
 // v2
@@ -91,3 +114,4 @@ function playFor(aPerformance) {
 }
 
 console.log(statementv7(invoice[0], plays));
+console.log(statementv8(invoice[0], plays));
