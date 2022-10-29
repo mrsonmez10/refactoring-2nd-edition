@@ -23,7 +23,8 @@ const invoice = [
     "as-like": { name: "As You Like It", type: "comedy" },
     othello: { name: "Othello", type: "tragedy" },
   };
-  
+
+  // 
   function statementv8(invoice, plays) {
     let result = `Statement for ${invoice.customer}\n`;
     for (let perf of invoice.performances) {
@@ -32,20 +33,21 @@ const invoice = [
         perf.audience
       } seats)\n`;
     }
-    result += `Amount owed is ${usd(totalVolumeCredits() / 100)}\n`;
+    result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
     result += `You earned ${totalVolumeCredits()} credits\n`;
     return result;
   }
-
+  
   // newly added
-  function totalVolumeCredits() {
+  function totalAmount() {
     let result = 0;
-    for (let perf of invoice.performances) {
-        result += amountForv3(perf);
+    for (let perf of invoice[0].performances) {
+      result += amountForv3(perf);
     }
     return result;
   }
   
+  // newly added
   function totalVolumeCredits() {
     let volumeCredits = 0;
     for (let perf of invoice[0].performances) {
@@ -63,7 +65,6 @@ const invoice = [
     return result;
   }
   
-  // newly added
   function usd(aNumber) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",

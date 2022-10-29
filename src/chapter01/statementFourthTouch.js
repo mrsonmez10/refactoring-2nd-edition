@@ -46,17 +46,24 @@ function statementv7(invoice, plays) {
 
 // 
 function statementv8(invoice, plays) {
-  let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
   for (let perf of invoice.performances) {
     // print line for this order
     result += `  ${playFor(perf).name}: ${usd(amountForv3(perf) / 100)} (${
       perf.audience
     } seats)\n`;
-    totalAmount += amountForv3(perf);
   }
-  result += `Amount owed is ${usd(totalAmount / 100)}\n`;
+  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
+  return result;
+}
+
+// newly added
+function totalAmount() {
+  let result = 0;
+  for (let perf of invoice[0].performances) {
+    result += amountForv3(perf);
+  }
   return result;
 }
 
