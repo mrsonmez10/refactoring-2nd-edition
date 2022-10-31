@@ -24,22 +24,28 @@ const invoice = [
     othello: { name: "Othello", type: "tragedy" },
   };
 
-  function statementv9(invoice, plays) {
+  function statementv10(invoice, plays) {
+    return renderPlainText(createStatementData(invoice, plays));
+  }
+
+  function createStatementData(invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
-    return renderPlainText(statementData, plays);
+    statementData.totalAmount = totalAmount(statementData);
+    statementData.totalVolumeCredits = totalVolumeCredits(statementData)
+    return statementData;
   }
    
   function renderPlainText(data, plays) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-      result += `  ${perf.play.name}: ${usd(amountForv3(perf) / 100)} (${
+      result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${
         perf.audience
       } seats)\n`;
-    }
-    result += `Amount owed is ${usd(totalAmount(data) / 100)}\n`;
-    result += `You earned ${totalVolumeCredits(data)} credits\n`;
+    }   
+    result += `Amount owed is ${usd(data.totalAmount / 100)}\n`;
+    result += `You earned ${data.totalVolumeCredits} credits\n`;
     return result;
   }
 
@@ -47,29 +53,24 @@ const invoice = [
     const result = Object.assign({}, aPerformance);
     result.play = playFor(result); 
     result.amount = amountForv3(result);
+    result.volumeCredits = volumeCreditsForv2(result);
     return result;
   }
   
   function totalAmount(data) {
-    let result = 0;
-    for (let perf of data.performances) {
-      result += amountForv3(perf);
-    }
-    return result;
+    return data.performances
+    .reduce((total, p) => total + p.amount, 0);
   }
   
   function totalVolumeCredits(data) {
-    let volumeCredits = 0;
-    for (let perf of data.performances) {
-      volumeCredits += volumeCreditsForv2(perf);
-    }
-    return volumeCredits;
+    return data.performances
+    .reduce((total, p) => total + p.volumeCredits, 0);
   }
   
   function volumeCreditsForv2(aPerformance) {
     let result = 0;
     result += Math.max(aPerformance.audience - 30, 0);
-    if ("comedy" === playFor(aPerformance).type)
+    if ("comedy" === aPerformance.play.type)
       result += Math.floor(aPerformance.audience / 5);
     return result;
   }
@@ -108,5 +109,5 @@ const invoice = [
     return plays[aPerformance.playID];
   }
   
-  console.log(statementv9(invoice[0], plays));
+  console.log(statementv10(invoice[0], plays));
   
