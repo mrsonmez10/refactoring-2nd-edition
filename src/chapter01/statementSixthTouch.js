@@ -31,11 +31,9 @@ const invoice = [
     return renderPlainText(statementData, plays);
   }
    
-  // newly added
   function renderPlainText(data, plays) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-      // print line for this order
       result += `  ${perf.play.name}: ${usd(amountForv3(perf) / 100)} (${
         perf.audience
       } seats)\n`;
@@ -45,7 +43,6 @@ const invoice = [
     return result;
   }
 
-  // newly added
   function enrichPerformance(aPerformance) {
     const result = Object.assign({}, aPerformance);
     result.play = playFor(result); 
@@ -69,7 +66,6 @@ const invoice = [
     return volumeCredits;
   }
   
-  // v2
   function volumeCreditsForv2(aPerformance) {
     let result = 0;
     result += Math.max(aPerformance.audience - 30, 0);
