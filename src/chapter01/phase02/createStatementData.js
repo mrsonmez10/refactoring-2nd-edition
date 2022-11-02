@@ -1,28 +1,36 @@
 const invoice = [
-    {
-      customer: "BigCo",
-      performances: [
-        {
-          playID: "hamlet",
-          audience: 55,
-        },
-        {
-          playID: "as-like",
-          audience: 35,
-        },
-        {
-          playID: "othello",
-          audience: 40,
-        },
-      ],
-    },
-  ];
-  
-  const plays = {
-    hamlet: { name: "Hamlet", type: "tragedy" },
-    "as-like": { name: "As You Like It", type: "comedy" },
-    othello: { name: "Othello", type: "tragedy" },
-  };
+  {
+    customer: "BigCo",
+    performances: [
+      {
+        playID: "hamlet",
+        audience: 55,
+      },
+      {
+        playID: "as-like",
+        audience: 35,
+      },
+      {
+        playID: "othello",
+        audience: 40,
+      },
+    ],
+  },
+];
+
+const plays = {
+  hamlet: { name: "Hamlet", type: "tragedy" },
+  "as-like": { name: "As You Like It", type: "comedy" },
+  othello: { name: "Othello", type: "tragedy" },
+};
+
+// na
+class PerformanceCalculator {
+  constructor(aPerformance, aPlay) {
+    this.performance = aPerformance;
+    this.play = aPlay;
+  }
+}
 
 export default function createStatementData(invoice, plays) {
   const result = {};
@@ -33,9 +41,14 @@ export default function createStatementData(invoice, plays) {
   return result;
 }
 
+// updated
 function enrichPerformance(aPerformance) {
+  const calculator = new PerformanceCalculator(
+    aPerformance,
+    playFor(aPerformance)
+  );
   const result = Object.assign({}, aPerformance);
-  result.play = playFor(result);
+  result.play = calculator.play;
   result.amount = amountForv3(result);
   result.volumeCredits = volumeCreditsForv2(result);
   return result;

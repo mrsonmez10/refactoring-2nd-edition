@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import {statement} from '../../../src/chapter01/solution/statementFinalized.js'
-import {htmlStatement} from "../../../src/chapter01/solution/statementFinalized";
+import {statement} from '../../../src/chapter01/finalphase/statementFinalized.js'
+import {htmlStatement} from "../../../src/chapter01/finalphase/statementFinalized";
 
 describe('statement', () => {
     let playsJson =
