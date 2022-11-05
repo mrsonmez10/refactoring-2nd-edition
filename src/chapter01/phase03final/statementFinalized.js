@@ -1,14 +1,36 @@
-export { statement };
+export { statementv10 };
 export { htmlStatement };
 
 import { createStatementData } from "./createStatementData.js";
 
-function usd(aNumber) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(aNumber / 100);
+const invoice = [
+  {
+    customer: "BigCo",
+    performances: [
+      {
+        playID: "hamlet",
+        audience: 55,
+      },
+      {
+        playID: "as-like",
+        audience: 35,
+      },
+      {
+        playID: "othello",
+        audience: 40,
+      },
+    ],
+  },
+];
+
+const plays = {
+  hamlet: { name: "Hamlet", type: "tragedy" },
+  "as-like": { name: "As You Like It", type: "comedy" },
+  othello: { name: "Othello", type: "tragedy" },
+};
+
+function statementv10(invoice, plays) {
+  return renderPlainText(createStatementData(invoice, plays));
 }
 
 function renderPlainText(statementData) {
@@ -18,10 +40,13 @@ function renderPlainText(statementData) {
       perf.audience
     } seats)\n`;
   }
-
   result += `Amount owed is ${usd(statementData.totalAmount)}\n`;
   result += `You earned ${statementData.totalVolumeCredits} credits\n`;
   return result;
+}
+
+function htmlStatement(invoice, plays) {
+  return renderHtml(createStatementData(invoice, plays));
 }
 
 function renderHtml(data) {
@@ -38,10 +63,12 @@ function renderHtml(data) {
   return result;
 }
 
-function htmlStatement(invoice, plays) {
-  return renderHtml(createStatementData(invoice, plays));
+function usd(aNumber) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(aNumber / 100);
 }
 
-function statement(invoice, plays) {
-  return renderPlainText(createStatementData(invoice, plays));
-}
+console.log(statementv10(invoice[0], plays));
