@@ -31,15 +31,12 @@ class PerformanceCalculator {
     this.play = aPlay;
   }
 
+  /*
   get amount() {
     let result = 0;
     switch (this.play.type) {
-      case "tragedy":
-        result = 40000;
-        if (this.performance.audience > 30) {
-          result += 1000 * (this.performance.audience - 30);
-        }
-        break;
+      case "tragedy": // since we have subclasses throw an error
+        throw 'bad thing';
       case "comedy":
         result = 30000;
         if (this.performance.audience > 20) {
@@ -52,12 +49,45 @@ class PerformanceCalculator {
     }
     return result;
   }
+  */
+
+  get amount() {
+    throw new Error("subclass responsibility");
+  }
 
   get volumeCredits() {
-    let result = 0;
-    result += Math.max(this.performance.audience - 30, 0);
-    if ("comedy" === this.play.type) result += Math.floor(this.performance.audience / 5);
+    // let result = 0;
+    return Math.max(this.performance.audience - 30, 0);
+    /*
+    if ("comedy" === this.play.type)
+      result += Math.floor(this.performance.audience / 5);
+    return result; 
+    */
+  }
+}
+
+class TragedyCalculator extends PerformanceCalculator {
+  get amount() {
+    let result = 40000;
+    if (this.performance.audience > 30) {
+      result += 1000 * (this.performance.audience - 30);
+    }
     return result;
+  }
+}
+
+class ComedyCalculator extends PerformanceCalculator {
+  get amount() {
+    let result = 30000;
+    if (this.performance.audience > 20) {
+      result += 10000 + 500 * (this.performance.audience - 20);
+    }
+    result += 300 * this.performance.audience;
+    return result;
+  }
+
+  get volumeCredits() {
+    return super.volumeCredits + Math.floor(this.performance.audience / 5);
   }
 }
 
@@ -72,7 +102,13 @@ export default function createStatementData(invoice, plays) {
 
 // updated
 function enrichPerformance(aPerformance) {
+  /*
   const calculator = new PerformanceCalculator(
+    aPerformance,
+    playFor(aPerformance)
+  ); 
+  */ // NOTE: replace the constructor call with a function, since JavaScript constructors can’t return subclasses
+  const calculator = createPerformanceCalculator(
     aPerformance,
     playFor(aPerformance)
   );
@@ -81,6 +117,17 @@ function enrichPerformance(aPerformance) {
   result.amount = calculator.amount;
   result.volumeCredits = calculator.volumeCredits;
   return result;
+}
+
+function createPerformanceCalculator(aPerformance, aPlay) {
+  switch (aPlay.type) {
+    case "tragedy":
+      return new TragedyCalculator(aPerformance, aPlay);
+    case "comedy":
+      return new ComedyCalculator(aPerformance, aPlay);
+    default:
+      throw new Error(`unknown type: ${aPlay.type}`);
+  }
 }
 
 function playFor(aPerformance) {
@@ -96,7 +143,6 @@ function totalVolumeCredits(data) {
 }
 
 console.log(createStatementData(invoice[0], plays));
-
 
 /* not used anymore
 function amountForv3(aPerformance) {
