@@ -24,7 +24,7 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-function statementv4(invoice, plays) {
+function statementv4(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
@@ -52,7 +52,7 @@ function statementv4(invoice, plays) {
 }
 
 // v5
-function statementv5(invoice, plays) {
+function statementv5(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;

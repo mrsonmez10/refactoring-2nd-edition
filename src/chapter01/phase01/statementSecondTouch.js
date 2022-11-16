@@ -134,7 +134,7 @@ function statementv2(invoice, plays) {
 }
 
 // v3
-function statementv3(invoice, plays) {
+function statementv3(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
