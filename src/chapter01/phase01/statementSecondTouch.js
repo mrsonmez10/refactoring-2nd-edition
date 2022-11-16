@@ -24,28 +24,6 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-function amountFor(aPerformance, play) {
-  let result = 0;
-  switch (play.type) {
-    case "tragedy":
-      result = 40000;
-      if (aPerformance.audience > 30) {
-        result += 1000 * (aPerformance.audience - 30);
-      }
-      break;
-    case "comedy":
-      result = 30000;
-      if (aPerformance.audience > 20) {
-        result += 10000 + 500 * (aPerformance.audience - 20);
-      }
-      result += 300 * aPerformance.audience;
-      break;
-    default:
-      throw new Error(`unknown type: ${play.type}`);
-  }
-  return result;
-}
-
 function amountForv2(aPerformance, play) {
   let result = 0;
   switch (playFor(aPerformance).type) {
@@ -107,7 +85,7 @@ function statement(invoice, plays) {
   }).format;
   for (let perf of invoice.performances) {
     const play = playFor(perf);
-    let thisAmount = amountFor(perf, play);
+    let thisAmount = amountForv2(perf, play);
 
     // add volume credits
     volumeCredits += Math.max(perf.audience - 30, 0);
