@@ -24,15 +24,15 @@ const invoice = [
     othello: { name: "Othello", type: "tragedy" },
   };
 
-  function statementv9(invoice, plays) {
+  function statementv9(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
-    return renderPlainText(statementData, plays);
+    return renderPlainText(statementData);
   }
    
   // newly added
-  function renderPlainText(data, plays) {
+  function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
       // print line for this order

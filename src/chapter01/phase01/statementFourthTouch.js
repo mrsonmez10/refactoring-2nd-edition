@@ -45,7 +45,7 @@ function statementv7(invoice) {
 }
 
 // 
-function statementv8(invoice, plays) {
+function statementv8(invoice) {
   let result = `Statement for ${invoice.customer}\n`;
   for (let perf of invoice.performances) {
     // print line for this order
