@@ -25,7 +25,7 @@ const plays = {
 };
 
 // v7 on goings
-function statementv7(invoice, plays) {
+function statementv7(invoice) {
   let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
   for (let perf of invoice.performances) {
@@ -75,7 +75,6 @@ function totalVolumeCredits() {
   }
   return volumeCredits;
 }
-
 // v2
 function volumeCreditsForv2(aPerformance) {
   let result = 0;
