@@ -26,8 +26,8 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-function statementv10(invoice, plays) {
-  return renderPlainText(createStatementData(invoice, plays));
+function statementv10(invoice) {
+  return renderPlainText(createStatementData(invoice));
 }
 
 function renderPlainText(data) {
