@@ -26,11 +26,11 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-function statementv10(invoice, plays) {
-  return renderPlainText(createStatementData(invoice, plays));
+function statementv10(invoice) {
+  return renderPlainText(createStatementData(invoice));
 }
 
-function renderPlainText(data, plays) {
+function renderPlainText(data) {
   let result = `Statement for ${data.customer}\n`;
   for (let perf of data.performances) {
     result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${
@@ -42,8 +42,8 @@ function renderPlainText(data, plays) {
   return result;
 }
 
-function htmlStatement(invoice, plays) {
-  return renderHtml(createStatementData(invoice, plays));
+function htmlStatement(invoice) {
+  return renderHtml(createStatementData(invoice));
 }
 
 function renderHtml(data) {

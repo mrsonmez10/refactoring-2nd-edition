@@ -119,5 +119,5 @@ function playFor(aPerformance) {
   return plays[aPerformance.playID];
 }
 
-console.log(statementv7(invoice[0], plays));
-console.log(statementv8(invoice[0], plays));
+console.log(statementv7(invoice[0]));
+console.log(statementv8(invoice[0]));

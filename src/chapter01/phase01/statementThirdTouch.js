@@ -76,7 +76,7 @@ function statementv5(invoice) {
 }
 
 // v6
-function statementv6(invoice, plays) {
+function statementv6(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
@@ -146,5 +146,5 @@ function playFor(aPerformance) {
   return plays[aPerformance.playID];
 }
 
-console.log(statementv5(invoice[0], plays));
-console.log(statementv6(invoice[0], plays));
+console.log(statementv5(invoice[0]));
+console.log(statementv6(invoice[0]));

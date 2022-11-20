@@ -24,7 +24,7 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-function amountForv2(aPerformance, play) {
+function amountForv2(aPerformance) {
   let result = 0;
   switch (playFor(aPerformance).type) {
     case "tragedy":
@@ -74,7 +74,7 @@ function playFor(aPerformance) {
 }
 
 // v1
-function statement(invoice, plays) {
+function statement(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
@@ -104,7 +104,7 @@ function statement(invoice, plays) {
 }
 
 // v2
-function statementv2(invoice, plays) {
+function statementv2(invoice) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
@@ -163,6 +163,6 @@ function statementv3(invoice) {
   return result;
 }
 
-console.log(statement(invoice[0], plays));
-console.log(statementv2(invoice[0], plays));
-console.log(statementv3(invoice[0], plays));
+console.log(statement(invoice[0]));
+console.log(statementv2(invoice[0]));
+console.log(statementv3(invoice[0]));

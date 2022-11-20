@@ -24,11 +24,11 @@ const invoice = [
     othello: { name: "Othello", type: "tragedy" },
   };
 
-  function statementv10(invoice, plays) {
-    return renderPlainText(createStatementData(invoice, plays));
+  function statementv10(invoice) {
+    return renderPlainText(createStatementData(invoice));
   }
 
-  function createStatementData(invoice, plays) {
+  function createStatementData(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
@@ -37,7 +37,7 @@ const invoice = [
     return statementData;
   }
    
-  function renderPlainText(data, plays) {
+  function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
       result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${
@@ -109,5 +109,5 @@ const invoice = [
     return plays[aPerformance.playID];
   }
   
-  console.log(statementv10(invoice[0], plays));
+  console.log(statementv10(invoice[0]));
   

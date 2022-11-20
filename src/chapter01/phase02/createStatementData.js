@@ -91,7 +91,7 @@ class ComedyCalculator extends PerformanceCalculator {
   }
 }
 
-export default function createStatementData(invoice, plays) {
+export default function createStatementData(invoice) {
   const result = {};
   result.customer = invoice.customer;
   result.performances = invoice.performances.map(enrichPerformance);

@@ -30,7 +30,7 @@ function statementv10(invoice, plays) {
   return renderPlainText(createStatementData(invoice, plays));
 }
 
-function renderPlainText(data, plays) {
+function renderPlainText(data) {
   let result = `Statement for ${data.customer}\n`;
   for (let perf of data.performances) {
     result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${
@@ -100,4 +100,4 @@ function playFor(aPerformance) {
   return plays[aPerformance.playID];
 }
 
-console.log(statementv10(invoice[0], plays));
+console.log(statementv10(invoice[0]));

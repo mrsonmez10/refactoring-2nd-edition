@@ -112,5 +112,5 @@ const invoice = [
     return plays[aPerformance.playID];
   }
   
-  console.log(statementv9(invoice[0], plays));
+  console.log(statementv9(invoice[0]));
   
