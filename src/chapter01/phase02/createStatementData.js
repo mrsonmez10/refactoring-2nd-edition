@@ -24,7 +24,6 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-// na
 class PerformanceCalculator {
   constructor(aPerformance, aPlay) {
     this.performance = aPerformance;
@@ -73,7 +72,6 @@ export default function createStatementData(invoice) {
   return result;
 }
 
-// updated
 function enrichPerformance(aPerformance) {
   const calculator = createPerformanceCalculator(
     aPerformance,
