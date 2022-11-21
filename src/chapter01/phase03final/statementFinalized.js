@@ -23,14 +23,8 @@ const invoice = [
   },
 ];
 
-const plays = {
-  hamlet: { name: "Hamlet", type: "tragedy" },
-  "as-like": { name: "As You Like It", type: "comedy" },
-  othello: { name: "Othello", type: "tragedy" },
-};
-
-function statementv10(invoice, plays) {
-  return renderPlainText(createStatementData(invoice, plays));
+function statementv10(invoice) {
+  return renderPlainText(createStatementData(invoice));
 }
 
 function renderPlainText(statementData) {
@@ -45,8 +39,8 @@ function renderPlainText(statementData) {
   return result;
 }
 
-function htmlStatement(invoice, plays) {
-  return renderHtml(createStatementData(invoice, plays));
+function htmlStatement(invoice) {
+  return renderHtml(createStatementData(invoice));
 }
 
 function renderHtml(data) {
@@ -71,4 +65,4 @@ function usd(aNumber) {
   }).format(aNumber / 100);
 }
 
-console.log(statementv10(invoice[0], plays));
+console.log(statementv10(invoice[0]));

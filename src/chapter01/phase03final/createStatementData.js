@@ -26,7 +26,7 @@ const plays = {
   othello: { name: "Othello", type: "tragedy" },
 };
 
-export default function createStatementData(invoice, plays) {
+export default function createStatementData(invoice) {
   const result = {};
   result.customer = invoice.customer;
   result.performances = invoice.performances.map(enrichPerformance);
@@ -110,4 +110,4 @@ class ComedyCalculator extends PerformanceCalculator {
   }
 }
 
-console.log(createStatementData(invoice[0], plays));
+console.log(createStatementData(invoice[0]));
