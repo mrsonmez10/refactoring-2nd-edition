@@ -1,11 +1,9 @@
 package chapter03.content02;
 
-public class DuplicatedCode {
+public class CarCredit {
 
-    // DRY
-    // parasal işlemlerde bigdecimal kullan!
     private double calculateInterest(double money) {
-        double result = 15 * money;
+        double result = 20 * money;
         /*
          * more algorithm here..
          */
@@ -14,6 +12,6 @@ public class DuplicatedCode {
     }
 
     public static void main(String[] args) {
-        LoanUtil.calculateInterest(15, 152432);
+        LoanUtil.calculateInterest(20, 2312);
     }
 }
