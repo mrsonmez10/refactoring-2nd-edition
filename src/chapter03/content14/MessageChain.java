@@ -1,6 +1,7 @@
 package chapter03.content14;
 
 public class MessageChain {
+
     /*
      * a.getB().getC().getD().getE().getTheData();
      * 
