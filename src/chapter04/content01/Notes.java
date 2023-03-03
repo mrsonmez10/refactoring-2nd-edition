@@ -6,13 +6,6 @@ public class Notes {
          * Aynı zamanda çözümlerimiz başka şeyleri de bozabilir.
          * Tüm testlerimiz otomatik, hızlı ve kendi sonuçlarını kontrol eder olmalı
          * 
-         * In a real system, I might have thousands of tests. A good test framework
-         * allows me to
-         * run them easily and to quickly see if any have failed. This simple feedback
-         * is essential to
-         * self­testing code. When I work, I’ll be running tests very
-         * frequently—checking progress
-         * with new code or checking for mistakes with refactoring
          * 
          * Refactoring requires tests. If you want to refactor, you have to write tests
          * 
@@ -28,6 +21,15 @@ public class Notes {
          * When you get a bug report, start by writing a unit test that exposes the
          * bug**
          * 
+         */
+
+        /*
+         * - Birim testleri birbirinden izole ve bağımsızdır
+         * - Verilen herhangi bir davranış tek ve sadece bir testte belirtilmelidir
+         * - Tekrarlanabilir, hızlı, yazma ve okuması kolay olmalı (Mülakat örneği)
+         * - Genel yazılım kurallarımız geçerli (Dry, naming vs..)
+         * - TDD yönelimi -> Örnekli göreceğiz!
+         * - Kullandığınız kütüphanelerin temel ve kritik noktalarını bilin
          */
     }
 }
