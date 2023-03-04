@@ -1,23 +1,30 @@
+/*
+ * - Birim testleri birbirinden izole ve bağımsız olmalı+
+ * - Verilen herhangi bir davranış tek ve sadece bir testte belirtilmelidir+
+ * - Tekrarlanabilir, hızlı, yazma ve okuması kolay olmalı (Mülakat örneği)+
+ * - Genel yazılım kurallarımız geçerli (Dry, naming vs..)+
+ * - Kullandığınız kütüphanelerin temel ve kritik noktalarını bilin+
+ * - TDD yönelimi -> Örnekli göreceğiz!
+ */
+
 const {
 	prepareMessage,
 	isNumberEven,
 	isNumberOdd,
-	getCustomer,
 	getPersons,
 	downloadCV
 } = require('../../../src/chapter04/content02/mixture.js');
 
 
 describe('Prepare Message', () => {
-	it('should get the prepared message message', () => {
+	it('should get the prepared message', () => {
 		const results = prepareMessage('Jane');
 		expect(results).toBe('Hey Jane');
 		expect(results).toMatch('Jane');
-		expect(results).toMatch(/Jane/);
 	});
 });
 
-describe('Even', () => {
+describe('Even control', () => {
 	it('should return true if number is even', () => {
 		const results = isNumberEven(2);
 		expect(results).toBeTruthy();
@@ -30,7 +37,7 @@ describe('Even', () => {
 	});
 });
 
-describe('Odd', () => {
+describe('Odd Control', () => {
 	it('should return true if number is odd', () => {
 		const results = isNumberOdd(3);
 		expect(results).toBeTruthy();
@@ -43,18 +50,6 @@ describe('Odd', () => {
 	});
 });
 
-describe('Customer', () => {
-	it('should find customer by id', () => {
-		const results = getCustomer(1);
-		expect(results).toBeDefined();
-		expect(results).not.toBeUndefined();
-
-		expect(results).toEqual({ id: 1, name: 'Jane' });
-		expect(results).toHaveProperty('id', 1);
-
-		expect(results).toEqual(expect.objectContaining({ id: 1 }));
-	});
-});
 
 describe('Persons', () => {
 	it('should fetch all the persons', () => {

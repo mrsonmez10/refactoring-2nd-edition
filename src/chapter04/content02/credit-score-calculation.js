@@ -14,3 +14,18 @@
  * 
  *  !Create new tests for every defect
  */
+
+
+const rate = 12;
+function creditCalculator(amount, months) {
+    const interest = (amount * (rate * 0.01)) / months;
+    const total = ((amount / months) + interest);
+    console.log(total)
+    return total;
+}
+
+// TODO amount control methodu ekle 
+
+module.exports = {
+	creditCalculator
+};
