@@ -18,14 +18,31 @@
 
 const rate = 12;
 function creditCalculator(amount, months) {
+    if(!isAmountValid(amount)) {
+        throw new Error('Amount is not valid!');
+    }
     const interest = (amount * (rate * 0.01)) / months;
     const total = ((amount / months) + interest);
-    console.log(total)
     return total;
 }
 
-// TODO amount control methodu ekle 
+function isAmountValid(amount) {
+    var flag = true;
+    if (amount === null || amount === undefined) {
+        flag = false;
+      }
+    else if (amount > 10000000) {
+        flag = false;
+    }
+    else if (amount < 0) {
+        flag = false;
+    }
 
-module.exports = {
-	creditCalculator
-};
+    return flag;
+}
+
+// console.log(creditCalculator(-1000, 12));
+
+module.exports = { creditCalculator };
+//export default creditCalculator; 
+
