@@ -24,6 +24,12 @@ Create a .babelrc file in the project directory:
 ```
 
 ## Run tests
+Project consist of lost of module so dont try to run "npm run test" in root directory in project instead of this Try with js file name.
+Example  
+```
+npm run test .\test\chapter06\content01\printOwingV04Final.test.js
+```
+
 In the root directory of your project, run the following commands:
 ```
 npm run test
