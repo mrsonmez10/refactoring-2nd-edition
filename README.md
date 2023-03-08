@@ -29,8 +29,3 @@ Example
 ```
 npm run test .\test\chapter06\content01\printOwingV04Final.test.js
 ```
-
-In the root directory of your project, run the following commands:
-```
-npm run test
-```
