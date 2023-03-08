@@ -17,7 +17,6 @@ function printOwing(invoice) {
     today.getDate() + 30
   );
 
-  //print details
   printDetails(invoice, outstanding, console);
 }
 

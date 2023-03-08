@@ -6,7 +6,7 @@ public class Notes {
 
         /*
          * Basit bir algoritma:
-         * Bir metod/fonksiyon içinde kod parçasına bakıp ne yaptığını anlmaya
+         * Bir metod/fonksiyon içinde kod parçasına bakıp ne yaptığını anlamaya
          * çalışıyorsan ayır.
          */
 
