@@ -1,18 +1,17 @@
 // Example: Using Local Variables
 /*
- * Yerel değişkenlerle ilgili en kolay durum, kullanıldıkları ancak yeniden atanmadıkları durumdur.
- * Bu durumda durumunda, bunları parametre olarak aktarabilirim
+ * Yerel değişkenlerle ilgili en kolay durum, kullanıldıkları 
+ * ancak yeniden atanmadıkları durumdur.
+ * Bu durumda, bunları parametre olarak aktarabilirim
  */
 
 function printOwing(invoice) {
   let outstanding = 0;
   printBanner();
-
   // calculate outstanding
   for (const o of invoice.orders) {
     outstanding += o.amount;
   }
-
   recordDueDate(clock, invoice); //.
   printDetails(invoice, outstanding, console); //.
 }
