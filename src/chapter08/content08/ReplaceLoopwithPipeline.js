@@ -10,3 +10,9 @@ export function acquireData(input) {
       phone: lineItems[2].trim(),
     }));
 }
+
+
+// Cherry Pick -> 
+function hello() {}
+
+// Java, javascript -> en çok kullanılan stream metotlarına bakalım bize bir kopya kağıdı çıksın.
