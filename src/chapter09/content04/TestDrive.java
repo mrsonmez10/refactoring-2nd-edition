@@ -15,7 +15,5 @@ public class TestDrive {
         Order2 order2 = new Order2(customer);
         Order2 order3 = new Order2(customer);
         Order2 order4 = new Order2(customer);
-
     }
-
 }
