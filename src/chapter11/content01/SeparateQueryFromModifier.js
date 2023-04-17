@@ -1,3 +1,5 @@
+// Bir değer döndüren herhangi bir metodun gözlemlenebilir yan etkileri olmamalı
+
 export function findMiscreant(people, alarm) {
   for (const p of people) {
     if (p === "Don") {
